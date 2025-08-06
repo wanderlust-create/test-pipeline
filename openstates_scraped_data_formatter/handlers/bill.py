@@ -16,8 +16,6 @@ print(f"💬 (Bill handler) Current latest timestamp: {BILL_LATEST_TIMESTAMP}")
 def handle_bill(
     STATE_ABBR: str,
     data: dict[str, Any],
-    session_name: str,
-    date_folder: str,
     DATA_PROCESSED_FOLDER: Path,
     DATA_NOT_PROCESSED_FOLDER: Path,
     filename: str,
@@ -57,6 +55,7 @@ def handle_bill(
         save_path = Path(DATA_PROCESSED_FOLDER).joinpath(
             "country:us",
             "congress",
+            "sessions",
             session_id,
             "bills",
             bill_id,
