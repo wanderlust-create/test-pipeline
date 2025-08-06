@@ -14,8 +14,6 @@ print(f"💬 (Vote_event handler) Current latest timestamp: {VOTE_LATEST_TIMESTA
 def handle_vote_event(
     STATE_ABBR: str,
     data: dict[str, any],
-    session_name: str,
-    date_folder: str,
     DATA_PROCESSED_FOLDER: Path,
     DATA_NOT_PROCESSED_FOLDER: Path,
     filename: str,
@@ -51,6 +49,7 @@ def handle_vote_event(
         save_path = Path(DATA_PROCESSED_FOLDER).joinpath(
             "country:us",
             "congress",
+            "sessions",
             session_id,
             "bills",
             bill_id,
