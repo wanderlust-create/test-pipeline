@@ -20,12 +20,9 @@ def clean_event_name(name: str) -> str:
 def handle_event(
     STATE_ABBR: str,
     data: dict[str, any],
-    session_name: str,
-    date_folder: str,
     DATA_PROCESSED_FOLDER: Path,
     DATA_NOT_PROCESSED_FOLDER: Path,
     filename: str,
-    referenced_bill_id: str | None,
 ) -> bool:
     """
     Saves event JSON to the correct session folder under events,
@@ -45,7 +42,6 @@ def handle_event(
         )
         return False
 
-    if not referenced_bill_id:
         referenced_bill_id = data.get("bill_identifier")
         if not referenced_bill_id:
             print("⚠️ Warning: Event missing bill_identifier")
