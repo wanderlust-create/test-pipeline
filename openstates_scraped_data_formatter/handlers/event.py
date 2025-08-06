@@ -42,17 +42,17 @@ def handle_event(
         )
         return False
 
-        referenced_bill_id = data.get("bill_identifier")
-        if not referenced_bill_id:
-            print("⚠️ Warning: Event missing bill_identifier")
-            record_error_file(
-                DATA_NOT_PROCESSED_FOLDER,
-                "from_handle_event_missing_bill_identifier",
-                filename,
-                data,
-                original_filename=filename,
-            )
-            return False
+    referenced_bill_id = data.get("bill_identifier")
+    if not referenced_bill_id:
+        print("⚠️ Warning: Event missing bill_identifier")
+        record_error_file(
+            DATA_NOT_PROCESSED_FOLDER,
+            "from_handle_event_missing_bill_identifier",
+            filename,
+            data,
+            original_filename=filename,
+        )
+        return False
 
     timestamp = format_timestamp(start_date)
     if timestamp == "unknown":
@@ -73,6 +73,7 @@ def handle_event(
         base_path = Path(DATA_PROCESSED_FOLDER).joinpath(
             "country:us",
             "congress",
+            "sessions",
             session_id,
             "events",
         )
